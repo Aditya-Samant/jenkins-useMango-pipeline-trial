@@ -1,6 +1,18 @@
 #!groovy
 import groovy.json.JsonSlurper
 
+properties([
+    parameters([
+        string(name: 'Project ID', defaultValue: 'ADITYASAMANT', description: 'Project ID'),
+        string(name: 'Tags', defaultValue: 'jenkins', description: 'Test Tags'),
+        string(name: 'Status', defaultValue: 'Design', description: 'Status of the tests'),
+        string(name: 'Environment', defaultValue: 'Jenkins', description: 'Environment Name'),
+        booleanParam(name: 'Run with datasets', defaultValue: false, description: 'Run with dataset scenarios')
+    ])
+])
+
+
+
 node {
     stage('Read and Execute tests') {
         // Obtain credentials for accessing the useMango server, which should be stored in Jenkins with the ID of 'usemango'
